@@ -73,7 +73,7 @@
                         <button
                             type="button"
                             wire:click="resetFilters"
-                            class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 text-xs leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
+                            class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 text-xs leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150"
                         >
                             Reset
                         </button>
@@ -90,7 +90,9 @@
                             wire:click="viewGame({{ $game->id }})"
                             class="flex items-center col-span-1 p-2 overflow-hidden transition duration-150 ease-in-out bg-white border border-gray-200 rounded-md shadow-sm cursor-pointer hover:border-gray-400"
                         >
-                            <img class="flex-shrink-0 w-16 h-16 bg-gray-300" src="{{ $game->image }}" alt="">
+                            <div class="flex items-center flex-shrink-0 w-16 h-16">
+                                <img class="w-full h-16 object-contain" src="{{ $game->image }}" alt="">
+                            </div>
                             <div class="flex-1 px-4 truncate">
                                 <p class="text-sm font-medium leading-5 text-gray-900 transition duration-150 ease-in-out hover:text-gray-600">{{ $game->title }}</p>
                                 <p class="text-sm leading-5 text-gray-500">
@@ -177,6 +179,9 @@
                                 <span class="font-semibold">{{ $selected_game->complexity }}</span>/5 complexity
                             </span>
                         @endif
+                        </div>
+                        <div class="mt-4 space-x-6 text-sm leading-5 text-gray-500">
+                            <span class="font-semibold">Categories:</span> {{ $selected_game->category_display }}
                         </div>
                         <p class="hidden mt-4 text-sm leading-4 text-gray-500 sm:block">{!! nl2br(e($selected_game->description)) !!}</p>
                     </div>

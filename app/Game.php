@@ -34,4 +34,12 @@ class Game extends Model
         }
         return '';
     }
+
+    public function getCategoryDisplayAttribute()
+    {
+        if ($this->categories) {
+            return implode(', ', explode(',', $this->categories));
+        }
+        return '';
+    }
 }
